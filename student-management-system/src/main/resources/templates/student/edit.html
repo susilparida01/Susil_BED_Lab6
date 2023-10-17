@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+    <div th:replace="student/header :: header"></div>
+<body>
+    <div th:replace="student/header :: navbar"></div>
+    <br/>
+    <br/>
+    <br/>
+    <div class="container">
+        <div class="row col-md-8 offset-md-2">
+            <div class="card">
+                <div class="card-header">
+                    <h2 class="text-center">Edit Student</h2>
+                </div>
+                <div class="card-body">
+                    <form role="form" method="post" th:action="@{/student/update(studentId=${student.id})}"
+                      th:object="${student}">
+                        <div class="mb-3">
+                            <label for="firstName" class="form-label"> First Name </label>
+                            <input type="text" id="firstName" name="firstName" class="form-control"
+                               placeholder="Enter First Name" th:field="*{firstName}"/>
+                            <p th:if="${#fields.hasErrors('firstName')}" class="text-danger" th:errors="*{firstName}"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="lastName" class="form-label"> Last Name </label>
+                            <input type="text" id="lastName" name="lastName" class="form-control"
+                               placeholder="Enter Last Name" th:field="*{lastName}"/>
+                            <p th:if="${#fields.hasErrors('lastName')}" class="text-danger" th:errors="*{lastName}"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="course" class="form-label"> Course </label>
+                            <input type="text" id="course" name="course" class="form-control"
+                               placeholder="Enter course name" th:field="*{course}"/>
+                            <p th:if="${#fields.hasErrors('course')}" class="text-danger" th:errors="*{course}"></p>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="country" class="form-label"> Country </label>
+                            <input type="text" id="country" name="country" class="form-control"
+                               placeholder="Enter country name" th:field="*{country}"/>
+                            <p th:if="${#fields.hasErrors('country')}" class="text-danger" th:errors="*{country}"></p>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
